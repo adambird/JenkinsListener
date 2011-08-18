@@ -60,14 +60,18 @@ namespace JenkinsListener
         private static Runspace InitializeRunspace()
         {
             var config = RunspaceConfiguration.Create();
-            var snapins = Configuration.SnapIns.Split(",".ToCharArray());
-            foreach (var snapin in snapins)
+            if (!String.IsNullOrEmpty(Configuration.SnapIns))
             {
-                PSSnapInException warning;
-                config.AddPSSnapIn(snapin, out warning);
-                if (warning != null)
+                var snapins = Configuration.SnapIns.Split(",".ToCharArray());
+
+                foreach (var snapin in snapins)
                 {
-                    Trace.TraceError("Error loading snapin {0} - {1}", snapin, warning.Message);
+                    PSSnapInException warning;
+                    config.AddPSSnapIn(snapin, out warning);
+                    if (warning != null)
+                    {
+                        Trace.TraceError("Error loading snapin {0} - {1}", snapin, warning.Message);
+                    }
                 }
             }
             return RunspaceFactory.CreateRunspace(config);
