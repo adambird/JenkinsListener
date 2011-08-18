@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Build.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="Jenkins\BuildPhase.cs" />
     <Compile Include="Jenkins\BuildStatus.cs" />
     <Compile Include="Listener.cs" />
     <Compile Include="Notification.cs" />

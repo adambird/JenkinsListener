@@ -19,11 +19,7 @@ namespace JenkinsListener
 
         public void Execute()
         {
-            if (Build.Status == Jenkins.BuildStatus.Failed)
-            {
-                Trace.TraceInformation("Doing nothing as build failed");
-            }
-            else
+            if (Build.Status == Jenkins.BuildStatus.Success && Build.Phase == Jenkins.BuildPhase.Finished)
             {
                 Trace.TraceInformation("Executing [{0}]", Configuration.ScriptFile);
 
@@ -54,6 +50,10 @@ namespace JenkinsListener
                     Trace.TraceError(ex.ToString());
                     throw;
                 }
+            }
+            else
+            {
+                Trace.TraceInformation("Not Executing as Notification Status:{0} Phase:{1}", Build.Status, Build.Phase);
             }
         }
 
