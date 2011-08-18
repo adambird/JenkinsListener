@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JenkinsListenerService;
+﻿using JenkinsListener;
 using NUnit.Framework;
 
 namespace JenkinsListenerTests
@@ -22,6 +18,21 @@ namespace JenkinsListenerTests
             Assert.AreEqual(1, actual.Build.Number);
             Assert.AreEqual("STARTED", actual.Build.Phase);
             Assert.AreEqual("FAILED", actual.Build.Status);
+        }
+
+        [Test]
+        public void FailingJsonPayload()
+        {
+            const string source =
+                "{\"name\":\"billing.events\",\"url\":\"job/billing.events/\",\"build\":{\"number\":44,\"phase\":\"FINISHED\",\"status\":\"SUCCESS\",\"url\":\"job/billing.events/44/\"}}";
+
+            var actual = Notification.New(source);
+
+            Assert.AreEqual("billing.events", actual.Name);
+            Assert.AreEqual("job/billing.events/", actual.Url);
+            Assert.AreEqual(44, actual.Build.Number);
+            Assert.AreEqual("FINISHED", actual.Build.Phase);
+            Assert.AreEqual("SUCCESS", actual.Build.Status);
         }
 
     }

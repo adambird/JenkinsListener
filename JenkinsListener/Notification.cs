@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Management.Automation.Runspaces;
-using System.Text;
 using Newtonsoft.Json;
 
-namespace JenkinsListenerService
+namespace JenkinsListener
 {
     public class Notification
     {
@@ -28,7 +25,7 @@ namespace JenkinsListenerService
             }
             else
             {
-                Trace.TraceInformation("Executing {0}", Configuration.ScriptFile);
+                Trace.TraceInformation("Executing [{0}]", Configuration.ScriptFile);
 
                 try
                 {
@@ -50,7 +47,7 @@ namespace JenkinsListenerService
                         }
                     }
 
-                    Trace.TraceInformation("Execution complete", Configuration.ScriptFile);
+                    Trace.TraceInformation("Execution of [{0}] complete", Configuration.ScriptFile);
                 }
                 catch (Exception ex)
                 {

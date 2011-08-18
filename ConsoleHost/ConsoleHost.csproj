@@ -50,6 +50,10 @@
       <Project>{4990FB8B-3219-40C1-9187-9EE30F519AA0}</Project>
       <Name>JenkinsListenerService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JenkinsListener\JenkinsListener.csproj">
+      <Project>{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}</Project>
+      <Name>JenkinsListener</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

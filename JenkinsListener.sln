@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleHost", "ConsoleHost\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{E51AF7CE-A148-4BF5-88B8-BB8F2288CED3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JenkinsListener", "JenkinsListener\JenkinsListener.csproj", "{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,16 @@ Global
 		{E51AF7CE-A148-4BF5-88B8-BB8F2288CED3}.Release|Mixed Platforms.Build.0 = Release|x86
 		{E51AF7CE-A148-4BF5-88B8-BB8F2288CED3}.Release|x86.ActiveCfg = Release|x86
 		{E51AF7CE-A148-4BF5-88B8-BB8F2288CED3}.Release|x86.Build.0 = Release|x86
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{18AED8EB-02EE-46EE-A0A9-19AA6D85739F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading;
+using JenkinsListener;
 
 namespace JenkinsListenerService
 {

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 
-namespace JenkinsListenerService
+namespace JenkinsListener
 {
     public class Listener : IDisposable
     {
@@ -82,6 +79,7 @@ namespace JenkinsListenerService
                 catch (Exception ex)
                 {
                     Trace.TraceError("{0} with payload {1}", ex.Message, payload);
+                    Trace.TraceError(ex.StackTrace);
                 }
             }
 
