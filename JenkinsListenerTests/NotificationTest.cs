@@ -4,20 +4,45 @@ using NUnit.Framework;
 namespace JenkinsListenerTests
 {
     [TestFixture]
-    public class NotificationTest
+    public class NotificationTestNew
     {
-        [Test]
-        public void NewFromJson()
+        private Notification _actual;
+
+        [SetUp]
+        public void GivenJsonStringWhenCreatingNewNotification()
         {
             const string source = "{\"name\":\"JobName\",\"url\":\"JobUrl\",\"build\":{\"number\":1,\"phase\":\"STARTED\",\"status\":\"FAILED\"}}";
+            _actual = Notification.New(source);
+        }
 
-            var actual = Notification.New(source);
+        [Test]
+        public void ThenTheJobNameIsSet()
+        {
+            Assert.AreEqual("JobName", _actual.Name);
+        }
 
-            Assert.AreEqual("JobName", actual.Name);
-            Assert.AreEqual("JobUrl", actual.Url);
-            Assert.AreEqual(1, actual.Build.Number);
-            Assert.AreEqual("STARTED", actual.Build.Phase);
-            Assert.AreEqual("FAILED", actual.Build.Status);
+        [Test]
+        public void ThenTheJobUrlIsSet()
+        {
+            Assert.AreEqual("JobUrl", _actual.Url);
+        }
+
+        [Test]
+        public void ThenTheBuildNumberIsSet()
+        {
+            Assert.AreEqual(1, _actual.Build.Number);
+        }
+
+        [Test]
+        public void ThenTheBuildPhaseIsSet()
+        {
+            Assert.AreEqual("STARTED", _actual.Build.Phase);
+        }
+
+        [Test]
+        public void ThenTheBuildStatusIsSet()
+        {
+            Assert.AreEqual("FAILED", _actual.Build.Status);
         }
 
         [Test]
@@ -35,5 +60,23 @@ namespace JenkinsListenerTests
             Assert.AreEqual("SUCCESS", actual.Build.Status);
         }
 
+    }
+
+    [TestFixture]
+    public class NotificationTestGetFilePath
+    {
+        private string _returnedContents;
+
+        [SetUp]
+        public void GivenAConfiguredScriptFileDirectoryPathWhenGettingFileContents()
+        {
+            _returnedContents = Notification.GetScriptFileContentForJobUrl("joburl");
+        }
+
+        [Test]
+        public void ThenTheFileContentReturnedIsCorrect()
+        {
+            Assert.That(_returnedContents, Is.EqualTo("hello world"));
+        }
     }
 }

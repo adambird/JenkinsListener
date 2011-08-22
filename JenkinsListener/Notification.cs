@@ -21,7 +21,7 @@ namespace JenkinsListener
         {
             if (Build.Status == Jenkins.BuildStatus.Success && Build.Phase == Jenkins.BuildPhase.Finished)
             {
-                Trace.TraceInformation("Executing [{0}]", Configuration.ScriptFile);
+                Trace.TraceInformation("Executing script for job [{0}] at Url in directory [{1}]", Name, Url, Configuration.ScriptFileDirectory);
 
                 try
                 {
@@ -32,7 +32,7 @@ namespace JenkinsListener
                         using (var pipeline = runspace.CreatePipeline())
                         {
 
-                            pipeline.Commands.AddScript(GetFileContents(Configuration.ScriptFile));
+                            pipeline.Commands.AddScript(GetScriptFileContentForJobUrl(Name));
 
                             var results = pipeline.Invoke();
 
@@ -43,7 +43,7 @@ namespace JenkinsListener
                         }
                     }
 
-                    Trace.TraceInformation("Execution of [{0}] complete", Configuration.ScriptFile);
+                    Trace.TraceInformation("Execution of script for job [{0}] for Url [{1}] complete", Name, Url);
                 }
                 catch (Exception ex)
                 {
@@ -77,9 +77,10 @@ namespace JenkinsListener
             return RunspaceFactory.CreateRunspace(config);
         }
 
-        private static string GetFileContents(string filePath)
+        internal static string GetScriptFileContentForJobUrl(string jobName)
         {
-            return File.ReadAllText(filePath);
+            var filename = String.Concat(Configuration.ScriptFileDirectory, jobName,".ps1");
+            return File.ReadAllText(filename);
         }
     }
 }

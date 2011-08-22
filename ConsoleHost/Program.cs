@@ -3,9 +3,9 @@ using JenkinsListener;
 
 namespace ConsoleHost
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Starting Jenkins Listener");
             var listener = new Listener();

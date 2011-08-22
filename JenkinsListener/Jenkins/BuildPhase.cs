@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace JenkinsListener.Jenkins
+﻿namespace JenkinsListener.Jenkins
 {
-    class BuildPhase
+    static class BuildPhase
     {
         public const string Finished = "FINISHED";
     }
