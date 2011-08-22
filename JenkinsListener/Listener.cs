@@ -28,7 +28,7 @@ namespace JenkinsListener
             _tcpListener = null;
         }
 
-        protected void AcceptClient(IAsyncResult result)
+        private static void AcceptClient(IAsyncResult result)
         {
             var listener = (TcpListener) result.AsyncState;
 
@@ -41,7 +41,7 @@ namespace JenkinsListener
 
         }
 
-        protected void ProcessClientConnection(TcpClient tcpClient)
+        private static void ProcessClientConnection(TcpClient tcpClient)
         {
             var clientStream = tcpClient.GetStream();
 
@@ -49,7 +49,7 @@ namespace JenkinsListener
 
             while (true)
             {
-                var bytesRead = 0;
+                int bytesRead;
 
                 try
                 {

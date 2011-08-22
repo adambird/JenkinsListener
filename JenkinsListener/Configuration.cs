@@ -2,16 +2,11 @@
 
 namespace JenkinsListener
 {
-    public class Configuration
+    public static class Configuration
     {
         public static int ListenerPort
         {
             get { return int.Parse(ConfigurationManager.AppSettings["ListenerPort"]); }
-        }
-
-        public static string ScriptFile
-        {
-            get { return ConfigurationManager.AppSettings["ScriptFile"]; }   
         }
 
         public static string SnapIns
@@ -19,5 +14,9 @@ namespace JenkinsListener
             get { return ConfigurationManager.AppSettings["SnapIns"]; }   
         }
 
+        public static string ScriptFileDirectory
+        {
+            get { return ConfigurationManager.AppSettings["ScriptFileDirectory"]; }
+        }
     }
 }
